@@ -14,6 +14,8 @@ TensorFlow 1.X
 
 ## Citation
 
+If you find UAV-DDPG useful or relevant to your project and research, please kindly cite our paper:
+
 	@article{wang2021computation,
   		title={Computation offloading optimization for UAV-assisted mobile edge computing: a deep deterministic policy gradient approach},
   		author={Wang, Yunpeng and Fang, Weiwei and Ding, Yi and Xiong, Naixue},
