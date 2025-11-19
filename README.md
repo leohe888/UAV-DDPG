@@ -33,7 +33,7 @@ If you find UAV-DDPG useful or relevant to your project and research, please kin
 
 ## For more
 
-We have another work on [MADDPG](https://github.com/fangvv/VN-MADDPG) for your reference, and you can simply use Ray for implementing [DRL algorithms](https://github.com/ray-project/ray/tree/master/rllib/algorithms) now.
+We have another work on [MADDPG](https://github.com/fangvv/VN-MADDPG) and [IMPALA](https://github.com/fangvv/MTACP) for your reference, and you can simply use Ray for implementing [DRL algorithms](https://github.com/ray-project/ray/tree/master/rllib/algorithms) now.
 
 ## Contact
 
