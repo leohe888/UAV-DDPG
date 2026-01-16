@@ -12,6 +12,12 @@ This work will be published by Wireless Networks. Click [here](https://link.spri
 
 TensorFlow 1.X
 
+```bash
+conda create -n tf114 python=3.6
+conda activate tf114
+pip install tensorflow==1.14.0 gym==0.15.3 matplotlib
+```
+
 ## Citation
 
 If you find UAV-DDPG useful or relevant to your project and research, please kindly cite our paper:
