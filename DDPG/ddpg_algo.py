@@ -173,13 +173,8 @@ for i in range(MAX_EPISODES):
         # Add exploration noise
         a = ddpg.choose_action(s_normal.state_normal(s))
         a = np.clip(np.random.normal(a, var), *a_bound)  # 高斯噪声add randomness to action selection for exploration
-        s_, r, is_terminal, step_redo, offloading_ratio_change, reset_dist = env.step(a)
-        if step_redo:
-            continue
-        if reset_dist:
-            a[2] = -1
-        if offloading_ratio_change:
-            a[3] = -1
+        s_, r, is_terminal = env.step(a)
+
         ddpg.store_transition(s_normal.state_normal(s), a, r, s_normal.state_normal(s_))  # 训练奖励缩小10倍
 
         if ddpg.pointer > MEMORY_CAPACITY:
