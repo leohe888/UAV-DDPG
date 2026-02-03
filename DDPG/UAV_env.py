@@ -3,7 +3,7 @@ import math
 import numpy as np
 
 
-TaskSize = 100  # 60Mbits 80Mbits 100Mbits 120Mbits 140Mbits
+TaskSize = 140  # 60Mbits 80Mbits 100Mbits 120Mbits 140Mbits
 Freq = 0.6e9    # 0.6GHz
 UserNum = 4
 
@@ -36,11 +36,11 @@ class UAVEnv(object):
     M = UserNum  # UE数量
     block_flag_list = np.random.randint(0, 2, M)  # 4个ue，ue的遮挡情况
     loc_ue_list = np.random.randint(0, 101, size=[M, 2])  # 位置信息:x在0-100随机
-    task_list = np.random.randint(1572864, 2097153, M)  # 60Mbits
+    # task_list = np.random.randint(1572864, 2097153, M)  # 60Mbits
     # task_list = np.random.randint(2097152, 2621441, M)  # 80Mbits
     # task_list = np.random.randint(2621440, 3145729, M)  # 100Mbits
     # task_list = np.random.randint(3145728, 3670017, M)  # 120Mbits
-    # task_list = np.random.randint(3670016, 4194305, M)  # 140Mbits
+    task_list = np.random.randint(3670016, 4194305, M)  # 140Mbits
 
     action_bound = [-1, 1]  # 对应tahn激活函数
     action_dim = 4  # 第一位表示服务的ue id;中间两位表示飞行角度和距离；后1位表示目前服务于UE的卸载率
@@ -63,11 +63,11 @@ class UAVEnv(object):
         self.reset_step()
 
     def reset_step(self):
-        self.task_list = np.random.randint(1572864, 2097153, self.M)  # 60Mbits
+        # self.task_list = np.random.randint(1572864, 2097153, self.M)  # 60Mbits
         # self.task_list = np.random.randint(2097152, 2621441, self.M)  # 80Mbits
         # self.task_list = np.random.randint(2621440, 3145729, self.M)    # 100Mbits
         # self.task_list = np.random.randint(3145728, 3670017, self.M)  # 120Mbits
-        # self.task_list = np.random.randint(3670016, 4194305, self.M)  # 140Mbits
+        self.task_list = np.random.randint(3670016, 4194305, self.M)  # 140Mbits
         self.block_flag_list = np.random.randint(0, 2, self.M)  # 4个ue，ue的遮挡情况
 
     def reset(self):

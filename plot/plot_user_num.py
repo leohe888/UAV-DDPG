@@ -5,10 +5,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # ===== 路径配置 =====
-ddpg_dir = r'..\data\ddpg\UserNum'
-dsact_dir = r'..\data\dsact\UserNum'
+ddpg_dir = r'data\ddpg\UserNum'
+dsact_dir = r'data\dsact\UserNum'
 
-user_nums = [4, 5, 6]
+user_nums = [2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 def smooth(y, window=10):
     if len(y) < window:
@@ -47,4 +47,6 @@ for u in user_nums:
     plt.legend()
     plt.grid(True)
     plt.tight_layout()
-    plt.show()
+    os.makedirs('images/ddpg_vs_ddsact/UserNum', exist_ok=True)
+    plt.savefig(f'images/ddpg_vs_ddsact/UserNum/{u}.png')
+    # plt.show()
