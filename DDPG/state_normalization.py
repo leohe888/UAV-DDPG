@@ -7,9 +7,13 @@ class StateNormalization(object):
         env = UAVEnv()
         M = env.M
         self.high_state = np.array(
-            [5e5, env.ground_length, env.ground_width, 100 * 1048576])
+            [5e5, env.ground_length, env.ground_width, 60 * 1048576])
         self.high_state = np.append(self.high_state, np.ones(M * 2) * env.ground_length)
-        self.high_state = np.append(self.high_state, np.ones(M) * 2621440)
+        self.high_state = np.append(self.high_state, np.ones(M) * 2097153)  # 60Mbits
+        # self.high_state = np.append(self.high_state, np.ones(M) * 2621441)  # 80Mbits
+        # self.high_state = np.append(self.high_state, np.ones(M) * 3145729)  # 100Mbits
+        # self.high_state = np.append(self.high_state, np.ones(M) * 3670017)  # 120Mbits
+        # self.high_state = np.append(self.high_state, np.ones(M) * 4194305)  # 140Mbits
         self.high_state = np.append(self.high_state, np.ones(M))
 
         # uav battery remain, uav loc, remaining sum task size, all ue loc, all ue task size, all ue block_flag

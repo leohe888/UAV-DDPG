@@ -17,9 +17,11 @@ from UAV_env import UAVEnv
 import time
 import matplotlib.pyplot as plt
 from state_normalization import StateNormalization
+import pickle
+import os
 
 #####################  hyper parameters  ####################
-MAX_EPISODES = 1000
+MAX_EPISODES = 5000
 # MAX_EPISODES = 50000
 
 LR_A = 0.001  # learning rate for actor
@@ -196,8 +198,28 @@ for i in range(MAX_EPISODES):
     # if (i + 1) % 50 == 0:
     #     eval_policy(ddpg, env)
 
+
+from UAV_env import TaskSize, Freq, UserNum
+# plk_save_path = f'data/ddpg/UserNum/{UserNum}.pkl'
+# image_save_path = f'images/ddpg/UserNum/{UserNum}.png'
+
+# plk_save_path = f'data/ddpg/Freq/{Freq/1e9}.pkl'
+# image_save_path = f'images/ddpg/Freq/{Freq/1e9}.png'
+
+plk_save_path = f'data/ddpg/TaskSize/{TaskSize}.pkl'
+image_save_path = f'images/ddpg/TaskSize/{TaskSize}.png'
+
+dir_path = os.path.dirname(plk_save_path)
+os.makedirs(dir_path, exist_ok=True)
+dir_path = os.path.dirname(image_save_path)
+os.makedirs(dir_path, exist_ok=True)
+
+with open(plk_save_path, 'wb') as f:
+    pickle.dump(ep_reward_list, f)
+
 print('Running time: ', time.time() - t1)
 plt.plot(ep_reward_list)
 plt.xlabel("Episode")
 plt.ylabel("Reward")
-plt.show()
+plt.savefig(image_save_path)
+# plt.show()
